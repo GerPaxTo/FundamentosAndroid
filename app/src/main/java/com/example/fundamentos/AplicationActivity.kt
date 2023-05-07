@@ -59,19 +59,15 @@ class AplicationActivity() : AppCompatActivity(), HeroClicked {
     }
 
     override fun heroClicked(hero: Hero) {
-        aplicationActivityViewModel.setnumHero(1)
-        aplicationActivityViewModel.setName(hero.name)
-        aplicationActivityViewModel.setPhoto(hero.photo)
-        aplicationActivityViewModel.setVida(hero.vida)
-        aplicationActivityViewModel.setDano(hero.damage)
-        addFragment()
+        val mFragmentManager = supportFragmentManager
+        val mFragmentTransaction = mFragmentManager.beginTransaction()
+        val mFragment = FightFragment()
+        val mBundle = Bundle()
+        mBundle.putString("mText",hero.name)
+        mBundle.putString("photo",hero.photo)
+        mBundle.putInt("vida",hero.vida)
+        mBundle.putInt("damage",hero.damage)
+        mFragment.arguments = mBundle
+        mFragmentTransaction.add(binding.fFragment.id, mFragment).commit()
     }
-
-    private fun addFragment() {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(binding.fFragment.id, FightFragment())
-            .commitNow()
-    }
-
 }

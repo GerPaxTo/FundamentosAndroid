@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fundamentos.databinding.ItemHeroeBinding
 import com.squareup.picasso.Picasso
+import kotlin.random.Random
 
 interface HeroClicked {
     fun heroClicked(hero: Hero)
@@ -37,6 +38,7 @@ class AplicationActivityAdapter(
             , parent
             , false
         )
+
         return ApAcViewHolder(binding, callback)
     }
 
