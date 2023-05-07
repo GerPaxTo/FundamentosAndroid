@@ -59,7 +59,7 @@ class FightFragment(): Fragment() {
         }
 
         binding.bnBack.setOnClickListener {
-
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
     }
 
